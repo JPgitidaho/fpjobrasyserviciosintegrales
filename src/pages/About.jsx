@@ -81,33 +81,35 @@ export default function About() {
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4" aria-label="Imágenes referenciales de servicios">
-            <img
-              src={heroImages['mantencion-edificios'].mobile}
-              alt="Técnico con casco revisando un tablero eléctrico"
-              width="800"
-              height="900"
-              loading="lazy"
-              decoding="async"
-              className="row-span-2 h-full w-full rounded-2xl border-b-4 border-fpj-green object-cover"
-            />
-            <img
-              src={heroImages['limpieza-vidrios-ventanales'].tablet}
-              alt="Trabajadores limpiando los ventanales de un edificio"
-              width="1280"
-              height="560"
-              loading="lazy"
-              decoding="async"
-              className="h-full w-full rounded-2xl object-cover"
-            />
-            <img
-              src={heroImages['pintura-remodelaciones'].tablet}
-              alt="Trabajador pintando una pared interior"
-              width="1280"
-              height="560"
-              loading="lazy"
-              decoding="async"
-              className="h-full w-full rounded-2xl border-b-4 border-fpj-blue object-cover"
-            />
+            {[
+              {
+                key: 'aseo-industrial',
+                alt: 'Operario con una máquina de aseo en una instalación industrial',
+                className: 'col-span-2 aspect-[16/9] border-b-4 border-fpj-green',
+              },
+              {
+                key: 'construccion-obras-menores',
+                alt: 'Trabajador con casco realizando una reparación',
+                className: 'aspect-[4/3]',
+              },
+              {
+                key: 'mantencion-edificios',
+                alt: 'Técnico revisando un tablero eléctrico',
+                className: 'aspect-[4/3] border-b-4 border-fpj-blue',
+              },
+            ].map((item) => (
+              <img
+                key={item.key}
+                src={heroImages[item.key].tablet}
+                alt={item.alt}
+                width="900"
+                height="500"
+                loading="lazy"
+                decoding="async"
+                style={{ objectPosition: heroImages[item.key].position }}
+                className={`w-full rounded-2xl object-cover ${item.className}`}
+              />
+            ))}
           </div>
         </div>
       </section>
