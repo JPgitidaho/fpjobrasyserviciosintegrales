@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+import Seo from '../components/Seo'
 import { services } from '../data/services'
 import ServiceIcon from '../components/ServiceIcon'
 import { externalLinkProps, getWhatsAppUrl } from '../utils/whatsapp'
@@ -16,10 +18,17 @@ function ServiceCard({ service }) {
         </span>
         <h3 className="text-xl font-bold text-fpj-graphite">{service.title}</h3>
         <p className="mt-2 flex-1 leading-relaxed text-fpj-graphite/80">{service.description}</p>
+        <Link
+          to={service.path}
+          className={`mt-6 inline-flex w-fit items-center rounded-md text-sm font-semibold text-fpj-blue hover:underline ${focusRing}`}
+        >
+          Ver detalle<span className="sr-only"> de {service.title}</span>
+          <span aria-hidden="true" className="ml-1">→</span>
+        </Link>
         <a
           href={url}
           {...externalLinkProps}
-          className={`mt-6 inline-flex items-center justify-center rounded-full bg-fpj-blue px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-fpj-graphite ${focusRing}`}
+          className={`mt-3 inline-flex items-center justify-center rounded-full bg-fpj-blue px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-fpj-graphite ${focusRing}`}
         >
           Solicitar cotización
           <span className="sr-only">
@@ -35,6 +44,11 @@ function ServiceCard({ service }) {
 export default function Services() {
   return (
     <>
+      <Seo
+        title="Servicios de limpieza, mantención y obras | FPJ Obras y Servicios Integrales"
+        description="Servicios de limpieza, mantención, pintura, remodelaciones y obras menores para empresas, edificios e instalaciones. Solicita tu cotización a FPJ."
+        path="/servicios"
+      />
       <section className="bg-fpj-graphite text-white" aria-labelledby="servicios-title">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
           <h1 id="servicios-title" className="text-4xl font-extrabold sm:text-5xl">

@@ -7,8 +7,8 @@ export const site = {
   coverage: 'Distintas regiones de Chile',
   // Pendiente de definir
   email: null,
-  // URL temporal hasta definir el dominio definitivo
-  url: 'https://esencialclean.vercel.app/',
+  // Dominio definitivo confirmado por la empresa (aún sin conectar a Vercel)
+  url: 'https://obrasyserviciosintegralesfpj.cl',
 }
 
 export default site

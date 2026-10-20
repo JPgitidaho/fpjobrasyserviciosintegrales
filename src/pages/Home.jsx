@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Seo from '../components/Seo'
 import { services } from '../data/services'
 import { site } from '../data/site'
 import { externalLinkProps, getWhatsAppUrl } from '../utils/whatsapp'
@@ -76,11 +77,11 @@ function ServiceCard({ service }) {
           {service.description}
         </p>
         <Link
-          to={SERVICES_PATH}
+          to={service.path}
           className={`mt-2 inline-flex w-fit items-center gap-1 rounded-md py-2 text-sm font-semibold text-fpj-blue hover:underline ${focusRing}`}
         >
-          Ver servicios
-          <span className="sr-only"> de {service.title}</span>
+          Ver servicio
+          <span className="sr-only">: {service.title}</span>
           <span aria-hidden="true">→</span>
         </Link>
       </article>
@@ -104,6 +105,11 @@ function QuoteButton({ children, className = '' }) {
 export default function Home() {
   return (
     <>
+      <Seo
+        title="FPJ | Obras y Servicios Integrales"
+        description="Soluciones integrales en limpieza, mantención y obras para empresas, edificios e instalaciones en distintas regiones de Chile. Solicita tu cotización a FPJ."
+        path="/"
+      />
       <section
         className="relative isolate flex min-h-[580px] items-center overflow-hidden bg-fpj-graphite md:min-h-[650px]"
         aria-labelledby="hero-title"

@@ -5,9 +5,6 @@ import { externalLinkProps, getWhatsAppUrl } from '../../utils/whatsapp'
 
 const quoteUrl = getWhatsAppUrl()
 
-// Las páginas individuales aún no existen: todos los servicios apuntan a /servicios.
-const SERVICES_PATH = '/servicios'
-
 const linkClass = ({ isActive }) =>
   `rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-fpj-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fpj-blue ${
     isActive ? 'text-fpj-blue' : 'text-fpj-graphite'
@@ -97,7 +94,7 @@ export default function Navbar() {
                 {services.map((service) => (
                   <li key={service.id}>
                     <Link
-                      to={SERVICES_PATH}
+                      to={service.path}
                       onClick={closeAll}
                       className="block px-4 py-2 text-sm text-fpj-graphite hover:bg-fpj-surface hover:text-fpj-blue focus-visible:bg-fpj-surface focus-visible:outline-none"
                     >
@@ -170,7 +167,7 @@ export default function Navbar() {
                 {services.map((service) => (
                   <li key={service.id}>
                     <Link
-                      to={SERVICES_PATH}
+                      to={service.path}
                       onClick={closeAll}
                       className="block rounded-md px-3 py-2 text-sm text-fpj-graphite hover:bg-fpj-surface hover:text-fpj-blue focus-visible:outline-2 focus-visible:outline-fpj-blue"
                     >
