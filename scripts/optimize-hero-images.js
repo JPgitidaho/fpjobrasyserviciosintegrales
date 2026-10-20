@@ -10,7 +10,7 @@ const pexels = (id) => `https://images.pexels.com/photos/${id}/pexels-photo-${id
 
 const heroes = [
   { name: 'limpieza-oficinas', url: pexels(6195288), position: 'centre' },
-  { name: 'limpieza-vidrios', url: pexels(34153042), position: 'attention' },
+  { name: 'limpieza-vidrios', url: pexels(6197111), position: 'centre' },
   { name: 'pintura-remodelaciones', url: pexels(36153946), position: 'top' },
   {
     name: 'mantencion-edificios',

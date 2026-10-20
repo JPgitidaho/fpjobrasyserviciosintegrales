@@ -11,7 +11,7 @@ const build = (name, source) => ({
 
 export const heroImages = {
   'limpieza-oficinas-empresas': build('limpieza-oficinas', 'https://www.pexels.com/photo/6195288/'),
-  'limpieza-vidrios-ventanales': build('limpieza-vidrios', 'https://www.pexels.com/photo/34153042/'),
+  'limpieza-vidrios-ventanales': build('limpieza-vidrios', 'https://www.pexels.com/photo/6197111/'),
   'pintura-remodelaciones': build('pintura-remodelaciones', 'https://www.pexels.com/photo/36153946/'),
   'mantencion-edificios': build(
     'mantencion-edificios',
