@@ -15,9 +15,11 @@ body {
   box-sizing: border-box;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+@layer base {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 .responsive-image {
@@ -70,4 +72,64 @@ a {
 
 .service-card-link:hover {
   @apply gap-1;
+}
+/* Identidad corporativa FPJ. Contrastes WCAG: ver notas en cada color. */
+@theme {
+  /* Sobre blanco 5.19:1 y sobre fondo claro 4.82:1 (AA texto normal). Texto blanco sobre azul: 5.19:1. */
+  --color-fpj-blue: #0865e9;
+  /* Solo decorativo/acentos: no usar como texto sobre blanco (2.13:1) ni texto blanco sobre verde. Con grafito: 6.77:1. */
+  --color-fpj-green: #60c900;
+  /* Texto principal: 14.43:1 sobre blanco, 13.41:1 sobre fondo claro. */
+  --color-fpj-graphite: #202a3b;
+  --color-fpj-white: #ffffff;
+  --color-fpj-surface: #f3f7fc;
+}
+
+/* Botón flotante de WhatsApp */
+@keyframes whatsapp-wave {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+.whatsapp-float {
+  box-shadow: 0 6px 16px rgb(37 211 102 / 0.4);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.07);
+  box-shadow: 0 10px 24px rgb(37 211 102 / 0.5);
+}
+
+.whatsapp-float:active {
+  transform: scale(0.96);
+}
+
+.whatsapp-float__wave {
+  opacity: 0;
+  animation: whatsapp-wave 1.8s ease-out infinite;
+}
+
+.whatsapp-float__wave:nth-child(2) {
+  animation-delay: 0.9s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float,
+  .whatsapp-float:hover,
+  .whatsapp-float:active {
+    transition: none;
+    transform: none;
+  }
+
+  .whatsapp-float__wave {
+    animation: none;
+    opacity: 0;
+  }
 }

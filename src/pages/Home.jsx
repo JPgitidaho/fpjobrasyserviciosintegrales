@@ -1,247 +1,210 @@
 import { Link } from 'react-router-dom'
-import {
-  sofaImageVariants,
-  carpetImageVariants,
-  mattressImageVariants,
-  chairsImageVariants,
-} from '../assets/images'
+import { services } from '../data/services'
+import { site } from '../data/site'
+import { externalLinkProps, getWhatsAppUrl } from '../utils/whatsapp'
 
-const services = [
-  {
-    title: 'Limpieza de sillones',
-    description: 'Recuperamos frescura y apariencia en sillones de uso diario.',
-    link: '/limpieza-de-sillones',
-    image: sofaImageVariants,
-  },
-  {
-    title: 'Limpieza de colchones',
-    description: 'Mejoramos higiene con tratamiento profundo y cuidadoso.',
-    link: '/limpieza-de-colchones',
-    image: mattressImageVariants,
-  },
-  {
-    title: 'Limpieza de alfombras',
-    description: 'Eliminamos suciedad, olores y manchas para renovar espacios.',
-    link: '/limpieza-de-alfombras',
-    image: carpetImageVariants,
-  },
-  {
-    title: 'Limpieza de sillas y tapices',
-    description: 'Devolvemos limpieza a sillas de tela y superficies tapizadas.',
-    link: '/limpieza-de-sillas-y-tapices',
-    image: chairsImageVariants,
-  },
-]
+const quoteUrl = getWhatsAppUrl()
+const SERVICES_PATH = '/servicios'
 
-const reasons = [
-  'Atención a domicilio',
-  'Resultados visibles',
-  'Cuidado profesional de las telas',
-  'Proceso claro y ordenado',
-]
+const focusRing =
+  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fpj-blue'
 
-const steps = [
-  {
-    number: '01',
-    title: 'Nos escribes',
-    description: 'Cuéntanos qué necesitas y envíanos fotos si quieres.',
-  },
-  {
-    number: '02',
-    title: 'Evaluamos',
-    description: 'Revisamos el servicio ideal según tipo y estado.',
-  },
-  {
-    number: '03',
-    title: 'Agendamos',
-    description: 'Coordinamos visita según disponibilidad.',
-  },
-  {
-    number: '04',
-    title: 'Limpiamos',
-    description: 'Realizamos limpieza profesional enfocada en buen resultado.',
-  },
-]
+const iconPaths = {
+  'limpieza-oficinas-empresas': (
+    <>
+      <path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16" />
+      <path d="M14 10h5a1 1 0 0 1 1 1v10" />
+      <path d="M8 8h2M8 12h2M8 16h2M2 21h20" />
+    </>
+  ),
+  'limpieza-vidrios-ventanales': (
+    <>
+      <rect x="4" y="3" width="16" height="18" rx="1" />
+      <path d="M12 3v18M4 12h16" />
+    </>
+  ),
+  'pintura-remodelaciones': (
+    <>
+      <rect x="3" y="3" width="14" height="6" rx="1" />
+      <path d="M17 6h3v6h-9v3" />
+      <rect x="9" y="15" width="4" height="6" rx="1" />
+    </>
+  ),
+  'mantencion-edificios': (
+    <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.1-.6-.6-2.1z" />
+  ),
+  'aseo-industrial': (
+    <>
+      <path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z" />
+      <path d="M19 14l.9 2.1L22 17l-2.1.9L19 20l-.9-2.1L16 17l2.1-.9z" />
+    </>
+  ),
+  'construccion-obras-menores': (
+    <>
+      <path d="M3 21h18M5 21v-6a7 7 0 0 1 14 0v6" />
+      <path d="M12 8v3M9 21v-4h6v4" />
+    </>
+  ),
+}
 
-const testimonials = [
-  {
-    name: 'María González',
-    text: 'Excelente servicio, mi sillón quedó como nuevo. Muy profesionales y puntuales.',
-  },
-  {
-    name: 'Carlos Rodríguez',
-    text: 'La limpieza de alfombra superó mis expectativas. Recomiendo totalmente.',
-  },
-  {
-    name: 'Ana López',
-    text: 'Servicio rápido y de calidad. Mi colchón ahora se siente fresco y limpio.',
-  },
-]
+function ServiceIcon({ id }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-7 w-7"
+    >
+      {iconPaths[id]}
+    </svg>
+  )
+}
 
-const faqs = [
-  {
-    question: '¿Trabajan a domicilio?',
-    answer: 'Sí, todos nuestros servicios se realizan a domicilio.',
-  },
-  {
-    question: '¿Cuánto tiempo toma?',
-    answer: 'Entre 2-4 horas por pieza, dependiendo del tamaño.',
-  },
-  {
-    question: '¿Ofrecen garantía?',
-    answer: 'Sí, garantizamos la satisfacción con nuestros trabajos.',
-  },
-]
+function ServiceCard({ service }) {
+  return (
+    <li>
+      <article className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
+        <span className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-fpj-surface text-fpj-blue">
+          <ServiceIcon id={service.id} />
+        </span>
+        <h3 className="text-lg font-bold text-fpj-graphite">{service.title}</h3>
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-fpj-graphite/80">
+          {service.description}
+        </p>
+        <Link
+          to={SERVICES_PATH}
+          className={`mt-2 inline-flex w-fit items-center gap-1 rounded-md py-2 text-sm font-semibold text-fpj-blue hover:underline ${focusRing}`}
+        >
+          Ver servicios
+          <span className="sr-only"> de {service.title}</span>
+          <span aria-hidden="true">→</span>
+        </Link>
+      </article>
+    </li>
+  )
+}
+
+function QuoteButton({ children, className = '' }) {
+  return (
+    <a
+      href={quoteUrl}
+      {...externalLinkProps}
+      className={`inline-flex items-center justify-center rounded-full px-7 py-3 text-base font-semibold transition-colors ${focusRing} ${className}`}
+    >
+      {children}
+      <span className="sr-only"> (se abre en una pestaña nueva)</span>
+    </a>
+  )
+}
 
 export default function Home() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Hero Section */}
-      <section className="text-center py-16">
-        <h1 className="text-5xl font-bold text-slate-900 mb-6">
-          Limpieza Profesional de Textiles
-        </h1>
-        <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
-          Recuperamos la frescura y apariencia de tus muebles tapizados con técnicas profesionales y productos especializados.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            to="/contacto"
-            className="bg-sky-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-sky-700 transition"
-          >
-            Solicitar Cotización
-          </Link>
-          <Link
-            to="/servicios"
-            className="border border-sky-600 text-sky-600 px-8 py-3 rounded-lg font-semibold hover:bg-sky-50 transition"
-          >
-            Ver Servicios
-          </Link>
-        </div>
-      </section>
-
-      {/* Services Grid */}
-      <section className="py-16 bg-gradient-to-br from-white via-slate-50 to-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-16 text-slate-900">Nuestros Servicios</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service, index) => (
-              <div key={index} className="service-card group">
-                <div className="service-card-image">
-                  <picture>
-                    <source type="image/webp" srcSet={service.image.webp800} />
-                    <img
-                      src={service.image.webp800}
-                      alt={service.title}
-                      loading="lazy"
-                    />
-                  </picture>
-                </div>
-                <div className="service-card-content">
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                  <Link
-                    to={service.link}
-                    className="service-card-link"
-                  >
-                    Más información
-                    <span className="group-hover:translate-x-1 transition-transform">→</span>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-16 bg-slate-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8">¿Por qué elegirnos?</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {reasons.map((reason, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
-                <div className="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-sky-600 font-bold">{index + 1}</span>
-                </div>
-                <p className="font-medium">{reason}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Nuestro Proceso</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-sky-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                  {step.number}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-slate-600">{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-16 bg-slate-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Testimonios</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
-                <p className="text-slate-600 mb-4">"{testimonial.text}"</p>
-                <p className="font-semibold">{testimonial.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Preview */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Preguntas Frecuentes</h2>
-          <div className="space-y-6">
-            {faqs.map((faq, index) => (
-              <div key={index} className="border-b border-slate-200 pb-6">
-                <h3 className="text-lg font-semibold mb-2">{faq.question}</h3>
-                <p className="text-slate-600">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Link
-              to="/preguntas-frecuentes"
-              className="text-sky-600 font-medium hover:text-sky-700 transition"
+    <>
+      <section
+        className="relative isolate flex min-h-[580px] items-center overflow-hidden bg-fpj-graphite md:min-h-[650px]"
+        aria-labelledby="hero-title"
+      >
+        <img
+          src="/assets/hero-fpj.webp"
+          srcSet="/assets/hero-fpj-800.webp 800w, /assets/hero-fpj.webp 1536w"
+          sizes="100vw"
+          alt="Trabajadores con casco y chaleco reflectante realizando limpieza y mantención en la fachada y los ventanales de un edificio corporativo moderno"
+          width="1536"
+          height="1024"
+          fetchPriority="high"
+          className="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_50%] md:object-center"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-gradient-to-b from-fpj-graphite/85 via-fpj-graphite/75 to-fpj-graphite/85 md:bg-gradient-to-r md:from-fpj-graphite/85 md:via-fpj-graphite/55 md:to-fpj-graphite/10"
+        />
+        <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+          <div className="max-w-2xl">
+            <h1
+              id="hero-title"
+              className="text-4xl font-extrabold leading-tight text-white [text-shadow:0_2px_8px_rgb(0_0_0/0.35)] sm:text-5xl lg:text-6xl"
             >
-              Ver todas las preguntas →
-            </Link>
+              Soluciones integrales en limpieza, mantención y obras
+            </h1>
+            <p className="mt-5 max-w-[600px] text-lg leading-relaxed text-slate-100">
+              Servicios de limpieza, mantención, pintura, remodelaciones y obras menores para
+              empresas, edificios e instalaciones en distintas regiones de Chile.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <QuoteButton className="bg-fpj-blue text-white hover:bg-white hover:text-fpj-graphite focus-visible:outline-white">
+                Solicitar cotización
+              </QuoteButton>
+              <Link
+                to={SERVICES_PATH}
+                className="inline-flex items-center justify-center rounded-full border-2 border-white px-7 py-3 text-base font-semibold text-white transition-colors hover:bg-white hover:text-fpj-graphite focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                Conocer servicios
+              </Link>
+            </div>
           </div>
+        </div>
+        <p className="absolute bottom-2 left-4 text-xs text-white/80 md:left-auto md:right-4">Imagen ilustrativa</p>
+      </section>
+
+      <section className="bg-white" aria-labelledby="servicios-title">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+          <h2 id="servicios-title" className="text-3xl font-bold text-fpj-graphite">
+            Nuestros servicios
+          </h2>
+          <div className="mt-2 h-1 w-16 rounded bg-fpj-green" aria-hidden="true" />
+          <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => (
+              <ServiceCard key={service.id} service={service} />
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-sky-600 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">¿Listo para renovar tus muebles?</h2>
-          <p className="text-xl mb-8 opacity-90">
-            Contáctanos hoy y recibe una cotización personalizada
+      <section className="bg-fpj-surface" aria-labelledby="empresa-title">
+        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+          <h2 id="empresa-title" className="text-3xl font-bold text-fpj-graphite">
+            Soluciones para cada proyecto
+          </h2>
+          <div className="mt-2 h-1 w-16 rounded bg-fpj-green" aria-hidden="true" />
+          <p className="mt-6 text-lg leading-relaxed text-fpj-graphite/85">
+            {site.legalName} reúne en un solo equipo servicios de limpieza, mantención y obras.
+            Esto permite atender distintas necesidades de empresas, edificios e instalaciones
+            con un mismo interlocutor, desde el aseo y la limpieza de vidrios hasta la pintura,
+            las remodelaciones y las obras menores.
           </p>
-          <Link
-            to="/contacto"
-            className="bg-white text-sky-600 px-8 py-3 rounded-lg font-semibold hover:bg-slate-50 transition"
-          >
-            Solicitar Cotización
-          </Link>
         </div>
       </section>
-    </div>
+
+      <section className="bg-white" aria-labelledby="cobertura-title">
+        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+          <h2 id="cobertura-title" className="text-3xl font-bold text-fpj-graphite">
+            Atención en distintas regiones de Chile
+          </h2>
+          <div className="mt-2 h-1 w-16 rounded bg-fpj-green" aria-hidden="true" />
+          <p className="mt-6 text-lg leading-relaxed text-fpj-graphite/85">
+            La disponibilidad de los servicios se confirma según la ubicación y las
+            características de cada proyecto.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-fpj-graphite text-white" aria-labelledby="cotizar-title">
+        <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6">
+          <h2 id="cotizar-title" className="text-3xl font-bold">
+            ¿Necesitas cotizar un servicio?
+          </h2>
+          <p className="mt-4 text-lg text-white/90">
+            Cuéntanos qué trabajo necesitas realizar y dónde se encuentra tu proyecto.
+          </p>
+          <QuoteButton className="mt-8 bg-fpj-green text-fpj-graphite hover:bg-white focus-visible:outline-white">
+            Cotizar por WhatsApp
+          </QuoteButton>
+        </div>
+      </section>
+    </>
   )
 }
