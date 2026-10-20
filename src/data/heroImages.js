@@ -1,26 +1,20 @@
-// Fotografías de stock con licencia de uso comercial (Pexels / Unsplash).
-// No son trabajos realizados por FPJ. Origen y proceso de generación: scripts/optimize-hero-images.js
+// Imágenes hero entregadas por FPJ. Proceso de generación: scripts/optimize-hero-images.js
+// position: punto de enfoque (object-position) para no recortar a las personas.
 const base = '/assets/heroes'
 
-const build = (name, source) => ({
+const build = (name, position) => ({
   desktop: `${base}/${name}-desktop.webp`,
   tablet: `${base}/${name}-tablet.webp`,
   mobile: `${base}/${name}-mobile.webp`,
-  source,
+  position,
 })
 
 export const heroImages = {
-  'limpieza-oficinas-empresas': build('limpieza-oficinas', 'https://www.pexels.com/photo/6195288/'),
-  'limpieza-vidrios-ventanales': build('limpieza-vidrios', 'https://www.pexels.com/photo/34153042/'),
-  'pintura-remodelaciones': build('pintura-remodelaciones', 'https://www.pexels.com/photo/36153946/'),
-  'mantencion-edificios': build(
-    'mantencion-edificios',
-    'https://unsplash.com/photos/08b45d6a269e',
-  ),
-  'aseo-industrial': build('aseo-industrial', 'https://www.pexels.com/photo/30589158/'),
-  'construccion-obras-menores': build(
-    'construccion-obras-menores',
-    'https://www.pexels.com/photo/30592255/',
-  ),
-  nosotros: build('nosotros', 'https://www.pexels.com/photo/6195125/'),
+  'limpieza-oficinas-empresas': build('limpieza-oficinas', '72% 30%'),
+  'limpieza-vidrios-ventanales': build('limpieza-vidrios', '78% 40%'),
+  'pintura-remodelaciones': build('pintura-remodelaciones', '48% 40%'),
+  'mantencion-edificios': build('mantencion-edificios', '68% 40%'),
+  'aseo-industrial': build('aseo-industrial', '55% 40%'),
+  'construccion-obras-menores': build('construccion-obras-menores', '50% 30%'),
+  nosotros: build('nosotros', '50% 12%'),
 }
