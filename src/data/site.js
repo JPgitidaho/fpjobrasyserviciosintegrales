@@ -3,12 +3,11 @@ export const site = {
   brandName: 'FPJ',
   rut: '78.537.386-3',
   phone: '+56954186187',
+  phoneDisplay: '+56 9 5418 6187',
   whatsapp: '56954186187',
+  email: 'obrasyserviciosintegralesfpj@gmail.com',
   coverage: 'Distintas regiones de Chile',
-  // Pendiente de definir
-  email: null,
-  // Dominio definitivo confirmado por la empresa (aún sin conectar a Vercel)
-  url: 'https://obrasyserviciosintegralesfpj.cl',
+  url: 'https://www.obrasyserviciosintegralesfpj.cl',
 }
 
 export default site

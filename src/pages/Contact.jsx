@@ -1,183 +1,106 @@
-import { useState } from 'react'
+import Seo from '../components/Seo'
+import QuoteForm from '../components/QuoteForm'
+import { site } from '../data/site'
+import { externalLinkProps, getWhatsAppUrl } from '../utils/whatsapp'
+
+const linkClass =
+  'rounded-sm font-semibold text-fpj-blue underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fpj-blue [overflow-wrap:anywhere]'
 
 export default function Contact() {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: ''
-  })
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    const subject = encodeURIComponent(`Nueva solicitud de contacto - ${form.service || 'Consulta general'}`)
-    const body = encodeURIComponent(
-      `Nombre: ${form.name}
-Correo: ${form.email}
-Teléfono: ${form.phone}
-Servicio: ${form.service}
-
-Mensaje:
-${form.message}`
-    )
-
-    window.location.href = `mailto:esencialcleanpro@gmail.com?subject=${subject}&body=${body}`
-  }
-
   return (
-    <main className="mx-auto max-w-6xl px-6 py-20">
-      <div className="mb-12 text-center">
-        <h1 className="text-4xl font-bold text-slate-900">Contacto</h1>
-        <p className="mt-4 mx-auto max-w-2xl text-slate-600">
-          Escríbenos por WhatsApp o completa el formulario para solicitar tu cotización.
-        </p>
-      </div>
+    <>
+      <Seo
+        title="Contacto y cotizaciones | FPJ Obras y Servicios Integrales"
+        description="Solicita tu cotización a FPJ Obras y Servicios Integrales: limpieza, mantención, pintura, remodelaciones y obras menores. Escríbenos por formulario o WhatsApp."
+        path="/contacto"
+      />
 
-      <div className="grid gap-10 lg:grid-cols-2">
-        <div className="rounded-3xl bg-slate-50 p-8 shadow-sm border border-slate-200">
-          <h2 className="text-2xl font-bold text-slate-900">Información de contacto</h2>
-          <p className="mt-3 text-slate-600">
-            Estamos listos para ayudarte con la limpieza de sillones, colchones, alfombras y tapices.
+      <section className="bg-fpj-graphite text-white" aria-labelledby="contacto-title">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-16">
+          <h1 id="contacto-title" className="text-4xl font-extrabold sm:text-5xl">
+            Contacto y cotizaciones
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg text-slate-200">
+            Cuéntanos qué necesitas y prepararemos una cotización según las características de tu
+            proyecto.
           </p>
+        </div>
+      </section>
 
-          <div className="mt-8 space-y-5">
-            <div className="rounded-2xl bg-white p-5 border border-slate-200">
-              <p className="text-sm font-semibold text-sky-600">Correo</p>
-              <a
-                href="mailto:esencialcleanpro@gmail.com"
-                className="mt-1 block text-lg font-medium text-slate-900 hover:text-sky-600 transition"
-              >
-                esencialcleanpro@gmail.com
-              </a>
+      <section className="bg-fpj-surface">
+        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[2fr_3fr]">
+          <aside aria-labelledby="info-title" className="min-w-0 space-y-6">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6">
+              <h2 id="info-title" className="text-xl font-bold text-fpj-graphite">
+                Información de contacto
+              </h2>
+              <dl className="mt-5 space-y-4 text-sm">
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+                    Razón social
+                  </dt>
+                  <dd className="mt-1 text-fpj-graphite">{site.legalName}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+                    RUT
+                  </dt>
+                  <dd className="mt-1 text-fpj-graphite">{site.rut}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+                    Teléfono
+                  </dt>
+                  <dd className="mt-1">
+                    <a href={`tel:${site.phone}`} className={linkClass}>
+                      {site.phoneDisplay}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+                    Correo
+                  </dt>
+                  <dd className="mt-1">
+                    <a href={`mailto:${site.email}`} className={linkClass}>
+                      {site.email}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+                    Cobertura
+                  </dt>
+                  <dd className="mt-1 text-fpj-graphite">
+                    Las solicitudes se evalúan según la ubicación del proyecto y la disponibilidad
+                    del servicio.
+                  </dd>
+                </div>
+              </dl>
             </div>
 
-            <div className="rounded-2xl bg-white p-5 border border-slate-200">
-              <p className="text-sm font-semibold text-sky-600">Teléfono</p>
+            <div className="rounded-2xl bg-fpj-graphite p-6 text-white">
+              <h2 className="text-xl font-bold">¿Prefieres WhatsApp?</h2>
+              <p className="mt-2 text-sm text-slate-200">
+                Escríbenos directamente y cuéntanos tu requerimiento.
+              </p>
               <a
-                href="tel:56936274715"
-                className="mt-1 block text-lg font-medium text-slate-900 hover:text-sky-600 transition"
+                href={getWhatsAppUrl()}
+                {...externalLinkProps}
+                className="mt-5 inline-flex items-center justify-center rounded-full bg-fpj-green px-6 py-3 font-semibold text-fpj-graphite transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                +56 9 3627 4715
+                Cotizar por WhatsApp
+                <span className="sr-only"> (se abre en una pestaña nueva)</span>
               </a>
             </div>
+          </aside>
 
-            <div className="rounded-2xl bg-white p-5 border border-slate-200">
-              <p className="text-sm font-semibold text-sky-600">WhatsApp</p>
-              <a
-                href="https://wa.me/56936274715"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-1 inline-flex items-center rounded-xl bg-green-500 px-5 py-3 font-semibold text-white transition hover:bg-green-600"
-              >
-                Escribir por WhatsApp
-              </a>
-            </div>
+          <div className="relative min-w-0 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+            <h2 className="mb-6 text-2xl font-bold text-fpj-graphite">Solicita tu cotización</h2>
+            <QuoteForm />
           </div>
         </div>
-
-        <form
-          onSubmit={handleSubmit}
-          className="rounded-3xl bg-white p-8 shadow-sm border border-slate-200"
-        >
-          <h2 className="text-2xl font-bold text-slate-900">Envíanos un mensaje</h2>
-          <p className="mt-3 text-slate-600">
-            Completa este formulario y se abrirá tu correo con el mensaje listo para enviar.
-          </p>
-
-          <div className="mt-8 grid gap-5">
-            <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700">
-                Nombre
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-sky-500"
-                placeholder="Tu nombre"
-              />
-            </div>
-
-            <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700">
-                Correo
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-sky-500"
-                placeholder="tucorreo@gmail.com"
-              />
-            </div>
-
-            <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700">
-                Teléfono
-              </label>
-              <input
-                type="text"
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-sky-500"
-                placeholder="Tu número"
-              />
-            </div>
-
-            <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700">
-                Servicio
-              </label>
-              <select
-                name="service"
-                value={form.service}
-                onChange={handleChange}
-                className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-sky-500"
-              >
-                <option value="">Selecciona un servicio</option>
-                <option value="Limpieza de sillones">Limpieza de sillones</option>
-                <option value="Limpieza de colchones">Limpieza de colchones</option>
-                <option value="Limpieza de alfombras">Limpieza de alfombras</option>
-                <option value="Sillas y tapices">Sillas y tapices</option>
-                <option value="Otro">Otro</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700">
-                Mensaje
-              </label>
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                required
-                rows="6"
-                className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-sky-500"
-                placeholder="Cuéntanos qué necesitas"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="rounded-xl bg-sky-600 px-6 py-3 font-semibold text-white transition hover:bg-sky-700"
-            >
-              Enviar mensaje
-            </button>
-          </div>
-        </form>
-      </div>
-    </main>
+      </section>
+    </>
   )
 }

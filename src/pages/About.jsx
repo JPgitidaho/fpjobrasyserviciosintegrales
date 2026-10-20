@@ -1,93 +1,137 @@
 import { Link } from 'react-router-dom'
-import { equipmentImageVariants } from '../assets/images'
+import Seo from '../components/Seo'
+import ServiceIcon from '../components/ServiceIcon'
+import { services } from '../data/services'
+import { site } from '../data/site'
+
+const focusRing =
+  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fpj-blue'
+
+const steps = [
+  {
+    title: 'Recepción del requerimiento',
+    text: 'Recibimos tu solicitud con el detalle del trabajo que necesitas.',
+  },
+  {
+    title: 'Evaluación del trabajo',
+    text: 'Revisamos las características del servicio solicitado.',
+  },
+  {
+    title: 'Preparación de la cotización',
+    text: 'Elaboramos una cotización según la información entregada.',
+  },
+  {
+    title: 'Coordinación del servicio',
+    text: 'Una vez aprobada la cotización, coordinamos la ejecución contigo.',
+  },
+]
 
 export default function About() {
-  const values = [
-    {
-      title: 'Profesionalismo',
-      description: 'Un equipo capacitado en diferentes textiles y técnicas de limpieza especializada.'
-    },
-    {
-      title: 'Confianza',
-      description: 'Atención clara, honesta y enfocada en dar seguridad desde el primer contacto.'
-    },
-    {
-      title: 'Resultados',
-      description: 'Transformaciones visibles en cada servicio con limpieza profunda y cuidadosa.'
-    },
-    {
-      title: 'Cuidado',
-      description: 'Tratamientos especializados adaptados a cada tipo de material y estado.'
-    },
-  ]
-
   return (
-    <main>
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="mb-12 max-w-3xl">
-          <h1 className="text-5xl font-bold text-slate-900">Sobre EsencialClean</h1>
-          <p className="mt-6 text-lg leading-8 text-slate-600">
-            EsencialClean nace para entregar una limpieza textil profesional, confiable y orientada a resultados visibles. Creemos que cada textil merece atención especializada y que la limpieza debe transformar no solo la apariencia, sino también la sensación de frescura en tus espacios.
+    <>
+      <Seo
+        title="Nosotros | FPJ Obras y Servicios Integrales"
+        description="Conoce a Obras y Servicios Integrales FPJ Limitada: soluciones de limpieza, mantención, pintura, remodelaciones y obras menores para empresas e instalaciones."
+        path="/nosotros"
+      />
+
+      <section className="bg-fpj-graphite text-white" aria-labelledby="nosotros-title">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+          <h1 id="nosotros-title" className="max-w-3xl text-4xl font-extrabold sm:text-5xl">
+            Conoce FPJ Obras y Servicios Integrales
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg text-slate-200">
+            Soluciones de limpieza, mantención y obras para empresas e instalaciones.
           </p>
-        </div>
-
-        <div className="rounded-[2rem] overflow-hidden shadow-lg mb-16">
-          <picture>
-            <source type="image/webp" srcSet={equipmentImageVariants.webp1600} />
-            <img src={equipmentImageVariants.webp1600} alt="Equipos profesionales" className="responsive-image responsive-image-max" />
-          </picture>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-12 py-12 border-y border-slate-200">
-          <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Nuestra misión</h2>
-            <p className="text-lg leading-8 text-slate-600">
-              Facilitar el cuidado de tus textiles con un servicio profesional a domicilio que ofrezca resultados visibles, transmita confianza y devuelva la frescura a tus espacios. Queremos ser tu aliado en mantener tus muebles limpios, al cuidado de especialistas.
-            </p>
-          </div>
-          
-          <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Nuestros valores</h2>
-            <p className="text-lg leading-8 text-slate-600">
-              Trabajamos con profesionalismo en cada servicio, desde la evaluación inicial hasta el resultado final. Cada cliente merece atención personalizada, procesos claros y un equipo comprometido con la excelencia en la limpieza textil.
-            </p>
-          </div>
         </div>
       </section>
 
-      <section className="bg-slate-50 py-16">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Lo que nos define</h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value) => (
-              <div
-                key={value.title}
-                className="rounded-[1.5rem] bg-white p-8 shadow-sm ring-1 ring-slate-100"
-              >
-                <div className="w-12 h-12 rounded-full bg-sky-100 mb-4" />
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{value.title}</h3>
-                <p className="text-sm leading-6 text-slate-600">{value.description}</p>
-              </div>
+      <section className="bg-white" aria-labelledby="quienes-title">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+          <h2 id="quienes-title" className="text-3xl font-bold text-fpj-graphite">
+            Quiénes somos
+          </h2>
+          <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-700">
+            {site.legalName} es una empresa dedicada a ofrecer servicios de limpieza, mantención,
+            pintura, remodelaciones y obras menores para empresas, edificios e instalaciones.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-fpj-surface" aria-labelledby="hacemos-title">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+          <h2 id="hacemos-title" className="text-3xl font-bold text-fpj-graphite">
+            Qué hacemos
+          </h2>
+          <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => (
+              <li key={service.id}>
+                <Link
+                  to={service.path}
+                  className={`flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 transition-shadow hover:shadow-md ${focusRing}`}
+                >
+                  <ServiceIcon
+                    id={service.id}
+                    className="h-8 w-8 text-fpj-blue"
+                  />
+                  <span className="mt-4 text-lg font-semibold text-fpj-graphite">
+                    {service.title}
+                  </span>
+                  <span className="mt-2 text-sm text-slate-600">{service.description}</span>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="rounded-[2.5rem] bg-gradient-to-r from-sky-700 to-cyan-500 px-12 py-14 text-white text-center shadow-xl">
-          <h2 className="text-3xl font-bold mb-4">¿Listo para renovar tus textiles?</h2>
-          <p className="max-w-2xl mx-auto leading-8 text-cyan-50 mb-8">
-            Contáctanos para una cotización personalizada. Te ayudaremos a recuperar la frescura de tus sillones, alfombras, colchones y más.
+      <section className="bg-white" aria-labelledby="trabajo-title">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+          <h2 id="trabajo-title" className="text-3xl font-bold text-fpj-graphite">
+            Nuestra forma de trabajar
+          </h2>
+          <ol className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step, index) => (
+              <li key={step.title} className="rounded-2xl border border-slate-200 p-6">
+                <span
+                  aria-hidden="true"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-fpj-blue font-bold text-white"
+                >
+                  {index + 1}
+                </span>
+                <h3 className="mt-4 text-lg font-semibold text-fpj-graphite">{step.title}</h3>
+                <p className="mt-2 text-sm text-slate-600">{step.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="bg-fpj-surface" aria-labelledby="cobertura-title">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+          <h2 id="cobertura-title" className="text-3xl font-bold text-fpj-graphite">
+            Cobertura
+          </h2>
+          <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-700">
+            Las solicitudes se evalúan según la ubicación del proyecto y la disponibilidad del
+            servicio.
           </p>
+        </div>
+      </section>
+
+      <section className="bg-fpj-graphite text-white" aria-labelledby="cta-title">
+        <div className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6">
+          <h2 id="cta-title" className="text-3xl font-bold">
+            Cuéntanos sobre tu proyecto
+          </h2>
           <Link
             to="/contacto"
-            className="inline-block rounded-full bg-white px-8 py-3 font-semibold text-sky-700 transition hover:bg-slate-100"
+            className="mt-8 inline-flex items-center justify-center rounded-full bg-fpj-green px-8 py-3 font-semibold text-fpj-graphite transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             Solicitar cotización
           </Link>
         </div>
       </section>
-    </main>
+    </>
   )
 }
