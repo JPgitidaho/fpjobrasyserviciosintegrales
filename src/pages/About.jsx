@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import Seo from '../components/Seo'
 import ServiceIcon from '../components/ServiceIcon'
 import { services } from '../data/services'
+import PageHero from '../components/PageHero'
+import { heroImages } from '../data/heroImages'
 import { site } from '../data/site'
 
 const focusRing =
@@ -26,6 +28,25 @@ const steps = [
   },
 ]
 
+const values = [
+  {
+    title: 'Responsabilidad',
+    text: 'Cumplimos lo acordado y cuidamos las instalaciones donde trabajamos.',
+  },
+  {
+    title: 'Compromiso',
+    text: 'Atendemos cada requerimiento con dedicación, de principio a fin.',
+  },
+  {
+    title: 'Calidad',
+    text: 'Buscamos resultados prolijos y duraderos en cada servicio.',
+  },
+  {
+    title: 'Trabajo en equipo',
+    text: 'Coordinamos personas y tareas para responder a las necesidades de cada proyecto.',
+  },
+]
+
 export default function About() {
   return (
     <>
@@ -35,26 +56,85 @@ export default function About() {
         path="/nosotros"
       />
 
-      <section className="bg-fpj-graphite text-white" aria-labelledby="nosotros-title">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
-          <h1 id="nosotros-title" className="max-w-3xl text-4xl font-extrabold sm:text-5xl">
-            Conoce FPJ Obras y Servicios Integrales
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg text-slate-200">
-            Soluciones de limpieza, mantención y obras para empresas e instalaciones.
-          </p>
+      <PageHero
+        id="nosotros-title"
+        image={heroImages.nosotros}
+        eyebrow="Nosotros"
+        title="Comprometidos con espacios más limpios, seguros y funcionales"
+        description="Entregamos soluciones integrales de limpieza, mantención y obras menores para empresas, edificios e instalaciones."
+      />
+
+      <section className="bg-white" aria-labelledby="quienes-title">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2">
+          <div>
+            <h2 id="quienes-title" className="text-3xl font-bold text-fpj-graphite">
+              Quiénes somos
+            </h2>
+            <div className="mt-2 h-1 w-16 rounded bg-fpj-green" aria-hidden="true" />
+            <p className="mt-6 text-lg leading-relaxed text-slate-700">
+              {site.legalName} es una empresa dedicada a entregar soluciones integrales de
+              limpieza, mantención y obras menores para empresas, edificios e instalaciones.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-slate-700">
+              Reunimos en un solo proveedor servicios que suelen contratarse por separado, para que
+              cada espacio se mantenga ordenado, seguro y listo para funcionar.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-4" aria-label="Imágenes referenciales de servicios">
+            <img
+              src={heroImages['mantencion-edificios'].mobile}
+              alt="Técnico con casco revisando un tablero eléctrico"
+              width="800"
+              height="900"
+              loading="lazy"
+              decoding="async"
+              className="row-span-2 h-full w-full rounded-2xl border-b-4 border-fpj-green object-cover"
+            />
+            <img
+              src={heroImages['limpieza-vidrios-ventanales'].tablet}
+              alt="Trabajadores limpiando los ventanales de un edificio"
+              width="1280"
+              height="560"
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full rounded-2xl object-cover"
+            />
+            <img
+              src={heroImages['pintura-remodelaciones'].tablet}
+              alt="Trabajador pintando una pared interior"
+              width="1280"
+              height="560"
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full rounded-2xl border-b-4 border-fpj-blue object-cover"
+            />
+          </div>
         </div>
       </section>
 
-      <section className="bg-white" aria-labelledby="quienes-title">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <h2 id="quienes-title" className="text-3xl font-bold text-fpj-graphite">
-            Quiénes somos
+      <section className="bg-fpj-graphite text-white" aria-labelledby="valores-title">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+          <h2 id="valores-title" className="text-3xl font-bold">
+            Nuestros valores
           </h2>
-          <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-700">
-            {site.legalName} es una empresa dedicada a ofrecer servicios de limpieza, mantención,
-            pintura, remodelaciones y obras menores para empresas, edificios e instalaciones.
-          </p>
+          <div className="mt-2 h-1 w-16 rounded bg-fpj-green" aria-hidden="true" />
+          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {values.map((value, index) => (
+              <li
+                key={value.title}
+                className="rounded-2xl border border-white/15 bg-white/5 p-6"
+              >
+                <span
+                  aria-hidden="true"
+                  className="flex h-11 w-11 items-center justify-center rounded-xl bg-fpj-blue font-bold text-white"
+                >
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h3 className="mt-5 text-xl font-semibold text-fpj-green">{value.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-100">{value.text}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
