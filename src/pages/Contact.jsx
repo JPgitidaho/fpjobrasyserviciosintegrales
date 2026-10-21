@@ -2,6 +2,7 @@ import Seo from '../components/Seo'
 import QuoteForm from '../components/QuoteForm'
 import { site } from '../data/site'
 import { externalLinkProps, getWhatsAppUrl } from '../utils/whatsapp'
+import { pageMetadata } from '../data/pageMetadata'
 
 const linkClass =
   'rounded-sm font-semibold text-fpj-blue underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fpj-blue [overflow-wrap:anywhere]'
@@ -9,11 +10,7 @@ const linkClass =
 export default function Contact() {
   return (
     <>
-      <Seo
-        title="Contacto y cotizaciones | FPJ Obras y Servicios Integrales"
-        description="Solicita tu cotización a FPJ Obras y Servicios Integrales: limpieza, mantención, pintura, remodelaciones y obras menores. Escríbenos por formulario o WhatsApp."
-        path="/contacto"
-      />
+      <Seo {...pageMetadata.contact} />
 
       <section className="bg-fpj-graphite text-white" aria-labelledby="contacto-title">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-16">
@@ -21,8 +18,8 @@ export default function Contact() {
             Contacto y cotizaciones
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-200">
-            Cuéntanos qué necesitas y prepararemos una cotización según las características de tu
-            proyecto.
+            Desde Rancagua atendemos solicitudes de empresas de todo Chile. Cuéntanos qué necesitas
+            y prepararemos una cotización según las características de tu proyecto.
           </p>
         </div>
       </section>
@@ -72,8 +69,8 @@ export default function Contact() {
                     Cobertura
                   </dt>
                   <dd className="mt-1 text-fpj-graphite">
-                    Las solicitudes se evalúan según la ubicación del proyecto y la disponibilidad
-                    del servicio.
+                    Base en {site.city}, {site.region}. Servicios para empresas en todo
+                    {` ${site.country}`}, sujetos a coordinación según cada proyecto.
                   </dd>
                 </div>
               </dl>

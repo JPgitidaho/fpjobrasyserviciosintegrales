@@ -1,58 +1,64 @@
+import { Link } from 'react-router-dom'
+import Seo from '../components/Seo'
+import { pageMetadata } from '../data/pageMetadata'
+
 export default function FAQ() {
   const faqs = [
     {
       question: '¿Cómo solicito una cotización?',
-      answer: 'Puedes contactarnos por WhatsApp o a través de nuestro formulario de contacto. Te pediremos fotos del textil y detalles para darte una cotización precisa.'
+      answer:
+        'Puedes escribirnos por WhatsApp o completar el formulario de contacto con los detalles de tu proyecto.',
     },
     {
-      question: '¿Trabajan a domicilio?',
-      answer: 'Sí, todos nuestros servicios se realizan a domicilio en la zona de atención. Coordinamos la visita según tu disponibilidad.'
+      question: '¿En qué lugares presta servicios FPJ?',
+      answer:
+        'Nuestra base está en Rancagua, Región de O’Higgins, y atendemos solicitudes de empresas de todo Chile. La coordinación depende de cada proyecto.',
     },
     {
-      question: '¿Qué tipos de telas limpian?',
-      answer: 'Trabajamos con una amplia variedad de telas: cuero, tela, microfibra, algodón, lana, entre otros. Evaluamos cada material para usar el tratamiento adecuado.'
+      question: '¿Qué servicios ofrece FPJ?',
+      answer:
+        'Ofrecemos limpieza de oficinas y empresas, limpieza de vidrios y ventanales, aseo industrial, mantención de edificios, pintura, remodelaciones y obras menores.',
     },
     {
-      question: '¿Cuánto tiempo toma el servicio?',
-      answer: 'El tiempo varía según el tamaño y tipo de textil, pero generalmente entre 2-4 horas por pieza. Te informamos el tiempo estimado al cotizar.'
+      question: '¿Cómo se prepara una cotización?',
+      answer:
+        'Revisamos el tipo de servicio, las características de las instalaciones y la ubicación para evaluar el alcance y coordinar una cotización.',
     },
-    {
-      question: '¿Ofrecen garantía en los servicios?',
-      answer: 'Sí, ofrecemos garantía en nuestros trabajos. Si no estás satisfecho con el resultado, realizamos correcciones sin costo adicional.'
-    },
-    {
-      question: '¿Qué productos utilizan?',
-      answer: 'Utilizamos productos profesionales de alta calidad, biodegradables y seguros para telas. No dañan los materiales ni la salud.'
-    }
   ]
 
   return (
-    <main className="mx-auto max-w-4xl px-6 py-20">
-      <div className="mb-12 text-center">
-        <h1 className="text-4xl font-bold text-slate-900">Preguntas frecuentes</h1>
-        <p className="mt-4 text-lg text-slate-600">
-          Resolvemos tus dudas sobre nuestros servicios de limpieza textil.
-        </p>
-      </div>
+    <>
+      <Seo {...pageMetadata.faq} />
+      <section className="mx-auto max-w-4xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <h1 className="text-4xl font-bold text-slate-900">Preguntas frecuentes</h1>
+          <p className="mt-4 text-lg text-slate-600">
+            Resolvemos tus dudas sobre los servicios para empresas de FPJ.
+          </p>
+        </div>
 
-      <div className="space-y-6">
-        {faqs.map((faq, index) => (
-          <div key={index} className="rounded-[1.5rem] bg-white p-6 shadow-sm ring-1 ring-slate-100">
-            <h3 className="text-lg font-semibold text-slate-900 mb-3">{faq.question}</h3>
-            <p className="text-slate-600 leading-7">{faq.answer}</p>
-          </div>
-        ))}
-      </div>
+        <div className="space-y-6">
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className="rounded-[1.5rem] bg-white p-6 shadow-sm ring-1 ring-slate-100"
+            >
+              <h3 className="text-lg font-semibold text-slate-900 mb-3">{faq.question}</h3>
+              <p className="text-slate-600 leading-7">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
 
-      <div className="mt-16 text-center">
-        <p className="text-slate-600 mb-6">¿Tienes otra pregunta? Contáctanos directamente.</p>
-        <a
-          href="https://wa.me/1234567890"
-          className="inline-block rounded-full bg-sky-600 px-8 py-3 font-semibold text-white hover:bg-sky-700 transition"
-        >
-          Escribir por WhatsApp
-        </a>
-      </div>
-    </main>
+        <div className="mt-16 text-center">
+          <p className="text-slate-600 mb-6">¿Tienes otra pregunta? Contáctanos directamente.</p>
+          <Link
+            to="/contacto"
+            className="inline-block rounded-full bg-sky-600 px-8 py-3 font-semibold text-white hover:bg-sky-700 transition"
+          >
+            Ir a contacto
+          </Link>
+        </div>
+      </section>
+    </>
   )
 }

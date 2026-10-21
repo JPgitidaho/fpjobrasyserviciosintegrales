@@ -4,6 +4,7 @@ import ServiceIcon from '../components/ServiceIcon'
 import { services } from '../data/services'
 import PageHero from '../components/PageHero'
 import { heroImages } from '../data/heroImages'
+import { pageMetadata } from '../data/pageMetadata'
 
 const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fpj-blue'
@@ -15,11 +16,7 @@ export default function ServiceDetail() {
   if (!service) {
     return (
       <section className="bg-white" aria-labelledby="no-encontrado-title">
-        <Seo
-          title="Servicio no encontrado | FPJ Obras y Servicios Integrales"
-          description="El servicio solicitado no existe. Revisa el listado de servicios de FPJ."
-          path="/servicios"
-        />
+        <Seo {...pageMetadata.notFound} />
         <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
           <h1 id="no-encontrado-title" className="text-3xl font-bold text-fpj-graphite">
             Servicio no encontrado
@@ -73,12 +70,13 @@ export default function ServiceDetail() {
       <section className="bg-fpj-surface" aria-labelledby="evaluacion-title">
         <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
           <h2 id="evaluacion-title" className="text-3xl font-bold text-fpj-graphite">
-            Cotización según tu proyecto
+            Atención desde Rancagua para empresas de todo Chile
           </h2>
           <div className="mt-2 h-1 w-16 rounded bg-fpj-green" aria-hidden="true" />
           <p className="mt-6 text-lg leading-relaxed text-fpj-graphite/85">
-            Cada solicitud se evalúa según el tipo de trabajo, las características de las
-            instalaciones y la ubicación del proyecto.
+            Nuestra base está en Rancagua, Región de O&apos;Higgins. Recibimos solicitudes para este
+            servicio en todo Chile y coordinamos cada proyecto según sus características y
+            ubicación.
           </p>
         </div>
       </section>

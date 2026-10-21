@@ -3,6 +3,7 @@ import Seo from '../components/Seo'
 import { services } from '../data/services'
 import { site } from '../data/site'
 import { externalLinkProps, getWhatsAppUrl } from '../utils/whatsapp'
+import { pageMetadata } from '../data/pageMetadata'
 
 const quoteUrl = getWhatsAppUrl()
 const SERVICES_PATH = '/servicios'
@@ -105,11 +106,7 @@ function QuoteButton({ children, className = '' }) {
 export default function Home() {
   return (
     <>
-      <Seo
-        title="FPJ | Obras y Servicios Integrales"
-        description="Soluciones integrales en limpieza, mantención y obras para empresas, edificios e instalaciones en distintas regiones de Chile. Solicita tu cotización a FPJ."
-        path="/"
-      />
+      <Seo {...pageMetadata.home} />
       <section
         className="relative isolate flex min-h-[580px] items-center overflow-hidden bg-fpj-graphite md:min-h-[650px]"
         aria-labelledby="hero-title"
@@ -134,11 +131,12 @@ export default function Home() {
               id="hero-title"
               className="text-4xl font-extrabold leading-tight text-white [text-shadow:0_2px_8px_rgb(0_0_0/0.35)] sm:text-5xl lg:text-6xl"
             >
-              Soluciones integrales en limpieza, mantención y obras
+              Limpieza, mantención y obras para empresas en Rancagua y todo Chile
             </h1>
             <p className="mt-5 max-w-[600px] text-lg leading-relaxed text-slate-100">
               Servicios de limpieza, mantención, pintura, remodelaciones y obras menores para
-              empresas, edificios e instalaciones en distintas regiones de Chile.
+              empresas, edificios e instalaciones. Nuestra base está en Rancagua y atendemos
+              proyectos en todo Chile.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <QuoteButton className="bg-fpj-blue text-white hover:bg-white hover:text-fpj-graphite focus-visible:outline-white">
@@ -188,12 +186,13 @@ export default function Home() {
       <section className="bg-white" aria-labelledby="cobertura-title">
         <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
           <h2 id="cobertura-title" className="text-3xl font-bold text-fpj-graphite">
-            Atención en distintas regiones de Chile
+            Base en Rancagua, atención en todo Chile
           </h2>
           <div className="mt-2 h-1 w-16 rounded bg-fpj-green" aria-hidden="true" />
           <p className="mt-6 text-lg leading-relaxed text-fpj-graphite/85">
-            La disponibilidad de los servicios se confirma según la ubicación y las
-            características de cada proyecto.
+            Operamos desde Rancagua, en la Región de O&apos;Higgins, y recibimos solicitudes de
+            empresas de todas las regiones de Chile. La coordinación y disponibilidad se confirman
+            según las características de cada proyecto.
           </p>
         </div>
       </section>

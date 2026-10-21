@@ -6,7 +6,10 @@ export const site = {
   phoneDisplay: '+56 9 5418 6187',
   whatsapp: '56954186187',
   email: 'obrasyserviciosintegralesfpj@gmail.com',
-  coverage: 'Distintas regiones de Chile',
+  city: 'Rancagua',
+  region: "Región de O'Higgins",
+  country: 'Chile',
+  coverage: 'Todo Chile',
   url: 'https://www.obrasyserviciosintegralesfpj.cl',
 }
 

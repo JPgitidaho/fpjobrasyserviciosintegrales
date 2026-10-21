@@ -10,7 +10,7 @@ export const services = [
       'Limpieza para oficinas, locales y espacios de trabajo de empresas. Cada servicio se planifica según el tipo de instalación y las necesidades del cliente.',
     metaTitle: 'Limpieza de oficinas y empresas | FPJ Obras y Servicios Integrales',
     metaDescription:
-      'Servicio de limpieza de oficinas y empresas. Solicita tu cotización a FPJ Obras y Servicios Integrales; se evalúa según tus instalaciones y ubicación.',
+      'Desde Rancagua, FPJ ofrece limpieza de oficinas y empresas en todo Chile. Solicita una cotización según las características de tus instalaciones.',
   },
   {
     id: 'limpieza-vidrios-ventanales',
@@ -22,7 +22,7 @@ export const services = [
       'Limpieza de vidrios, ventanales y superficies acristaladas de edificios, oficinas y locales. Se evalúa según el tipo de superficie y su ubicación.',
     metaTitle: 'Limpieza de vidrios y ventanales | FPJ Obras y Servicios Integrales',
     metaDescription:
-      'Limpieza de vidrios y ventanales para edificios, oficinas y locales. Cotiza con FPJ Obras y Servicios Integrales según el tipo de superficie y ubicación.',
+      'Cotiza limpieza de vidrios y ventanales en Rancagua y otras regiones de Chile. FPJ atiende empresas y edificios según cada proyecto.',
   },
   {
     id: 'pintura-remodelaciones',
@@ -34,7 +34,7 @@ export const services = [
       'Trabajos de pintura y remodelación para renovar espacios de empresas, edificios e instalaciones. Cada proyecto se cotiza según el alcance del trabajo.',
     metaTitle: 'Pintura y remodelaciones | FPJ Obras y Servicios Integrales',
     metaDescription:
-      'Servicios de pintura y remodelaciones para empresas, edificios e instalaciones. Solicita tu cotización a FPJ según el alcance de tu proyecto.',
+      'FPJ realiza pintura y remodelaciones para empresas en Rancagua y todo Chile. Consulta por tu proyecto y cotiza según el alcance del trabajo.',
   },
   {
     id: 'mantencion-edificios',
@@ -46,7 +46,7 @@ export const services = [
       'Mantención para edificios e instalaciones, orientada a conservar los espacios en buen estado. El alcance se define según las necesidades de cada inmueble.',
     metaTitle: 'Mantención de edificios | FPJ Obras y Servicios Integrales',
     metaDescription:
-      'Servicio de mantención de edificios e instalaciones. Cotiza con FPJ Obras y Servicios Integrales; el alcance se define según cada inmueble.',
+      'Servicio de mantención de edificios desde Rancagua, con cobertura en todo Chile. Solicita una cotización según las necesidades de tu inmueble.',
   },
   {
     id: 'aseo-industrial',
@@ -58,7 +58,7 @@ export const services = [
       'Aseo para instalaciones industriales y espacios de gran superficie. Se coordina según las características del lugar y los requerimientos del trabajo.',
     metaTitle: 'Aseo industrial | FPJ Obras y Servicios Integrales',
     metaDescription:
-      'Servicio de aseo industrial para instalaciones y espacios de gran superficie. Solicita tu cotización a FPJ Obras y Servicios Integrales.',
+      'Aseo industrial para empresas en Rancagua y todo Chile. Contacta a FPJ para evaluar las características de tu instalación y coordinar una cotización.',
   },
   {
     id: 'construccion-obras-menores',
@@ -70,7 +70,7 @@ export const services = [
       'Ejecución de obras menores y trabajos de construcción para empresas e instalaciones. Se evalúan según el tipo de obra y la ubicación del proyecto.',
     metaTitle: 'Construcción y obras menores | FPJ Obras y Servicios Integrales',
     metaDescription:
-      'Construcción y obras menores para empresas e instalaciones. Cotiza con FPJ Obras y Servicios Integrales según el tipo de obra y su ubicación.',
+      'Cotiza construcción y obras menores en Rancagua o en otras regiones de Chile. FPJ evalúa cada proyecto según el trabajo y su ubicación.',
   },
 ]
 
