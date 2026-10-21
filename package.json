@@ -1,5 +1,5 @@
 {
-  "name": "esencialclean",
+  "name": "fpj-obras-y-servicios-integrales",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build && node scripts/prerender.js",
     "lint": "eslint .",
+    "test": "node scripts/test-seo-output.js",
     "preview": "vite preview",
     "images:optimize": "node scripts/optimize-images.js"
   },

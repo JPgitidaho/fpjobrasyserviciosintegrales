@@ -1,4 +1,3 @@
-// Descripciones y metadatos en BORRADOR: pendientes de validación comercial por FPJ.
 export const services = [
   {
     id: 'limpieza-oficinas-empresas',
