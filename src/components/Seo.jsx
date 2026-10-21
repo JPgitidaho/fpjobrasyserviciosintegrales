@@ -20,7 +20,7 @@ function metaTag(attr, name) {
   }
 }
 
-export default function Seo({ title, description, path = '/' }) {
+export default function Seo({ title, description, path = '/', noindex = false }) {
   useEffect(() => {
     const base = site.url.replace(/\/$/, '')
     const canonical = `${base}${path === '/' ? '' : path}`
@@ -28,25 +28,34 @@ export default function Seo({ title, description, path = '/' }) {
 
     document.title = title
     setMeta('meta[name="description"]', metaTag('name', 'description'), description)
+    setMeta(
+      'meta[name="robots"]',
+      metaTag('name', 'robots'),
+      noindex ? 'noindex,follow' : 'index,follow',
+    )
     setMeta('meta[property="og:title"]', metaTag('property', 'og:title'), title)
     setMeta('meta[property="og:description"]', metaTag('property', 'og:description'), description)
     setMeta('meta[property="og:url"]', metaTag('property', 'og:url'), canonical)
     setMeta('meta[property="og:site_name"]', metaTag('property', 'og:site_name'), SITE_NAME)
     setMeta('meta[property="og:type"]', metaTag('property', 'og:type'), 'website')
-    setMeta(
-      'link[rel="canonical"]',
-      () => {
-        const el = document.createElement('link')
-        el.setAttribute('rel', 'canonical')
-        return el
-      },
-      canonical,
-    )
+    if (noindex) {
+      document.head.querySelector('link[rel="canonical"]')?.remove()
+    } else {
+      setMeta(
+        'link[rel="canonical"]',
+        () => {
+          const el = document.createElement('link')
+          el.setAttribute('rel', 'canonical')
+          return el
+        },
+        canonical,
+      )
+    }
 
     return () => {
       document.title = previousTitle
     }
-  }, [title, description, path])
+  }, [title, description, path, noindex])
 
   return null
 }

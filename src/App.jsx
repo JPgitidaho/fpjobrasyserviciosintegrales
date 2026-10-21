@@ -8,10 +8,7 @@ import ServiceDetail from './pages/ServiceDetail'
 import About from './pages/About'
 import FAQ from './pages/FAQ'
 import Contact from './pages/Contact'
-import Sillones from './pages/Sillones'
-import Colchones from './pages/Colchones'
-import Alfombras from './pages/Alfombras'
-import SillasTapices from './pages/SillasTapices'
+import NotFound from './pages/NotFound'
 
 export default function App() {
   return (
@@ -22,13 +19,10 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/servicios" element={<Services />} />
           <Route path="/servicios/:slug" element={<ServiceDetail />} />
-          <Route path="/limpieza-de-sillones" element={<Sillones />} />
-          <Route path="/limpieza-de-colchones" element={<Colchones />} />
-          <Route path="/limpieza-de-alfombras" element={<Alfombras />} />
-          <Route path="/limpieza-de-sillas-y-tapices" element={<SillasTapices />} />
           <Route path="/nosotros" element={<About />} />
           <Route path="/preguntas-frecuentes" element={<FAQ />} />
           <Route path="/contacto" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <WhatsAppButton />

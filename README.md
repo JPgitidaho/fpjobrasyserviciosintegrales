@@ -1,16 +1,35 @@
-# React + Vite
+# FPJ Obras y Servicios Integrales
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio corporativo de Obras y Servicios Integrales FPJ Limitada, implementado con React y Vite.
+La empresa tiene base en Rancagua, Región de O'Higgins, y presta servicios para empresas en todo
+Chile.
 
-Currently, two official plugins are available:
+## Desarrollo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```sh
+npm install
+npm run dev
+```
 
-## React Compiler
+## Validación y build
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```sh
+npm run lint
+npm run build
+npm test
+```
 
-## Expanding the ESLint configuration
+El build genera HTML prerenderizado para las páginas públicas y un `404.html`. Vercel publica esos
+archivos estáticos con URL limpias. El prerenderizado incluye metadatos y contenido inicial; React
+hidrata la página en el navegador.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Cotizaciones por correo
+
+La API de cotización usa Resend. Configura `RESEND_API_KEY`, `CONTACT_FROM_EMAIL` y
+`CONTACT_TO_EMAIL` como variables de entorno en Vercel. Los valores de ejemplo están documentados
+en [.env.example](./.env.example); no agregues secretos al repositorio.
+
+## Imágenes Hero
+
+Los Heroes fuente de FPJ están en `scripts/hero-sources`. Para regenerar las variantes optimizadas
+en `public/assets/heroes`, ejecuta `npm run images:optimize`.

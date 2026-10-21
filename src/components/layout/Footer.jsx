@@ -91,7 +91,7 @@ export default function Footer() {
             </li>
             <li>
               <span className="block text-xs uppercase tracking-wide text-slate-400">Cobertura</span>
-              Distintas regiones de Chile, según disponibilidad del servicio.
+              Base en Rancagua; atención en todo Chile, según coordinación del servicio.
             </li>
             <li>
               <a

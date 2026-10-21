@@ -5,6 +5,7 @@ import { services } from '../data/services'
 import PageHero from '../components/PageHero'
 import { heroImages } from '../data/heroImages'
 import { site } from '../data/site'
+import { pageMetadata } from '../data/pageMetadata'
 
 const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fpj-blue'
@@ -50,18 +51,14 @@ const values = [
 export default function About() {
   return (
     <>
-      <Seo
-        title="Nosotros | FPJ Obras y Servicios Integrales"
-        description="Conoce a Obras y Servicios Integrales FPJ Limitada: soluciones de limpieza, mantención, pintura, remodelaciones y obras menores para empresas e instalaciones."
-        path="/nosotros"
-      />
+      <Seo {...pageMetadata.about} />
 
       <PageHero
         id="nosotros-title"
         image={heroImages.nosotros}
         eyebrow="Nosotros"
         title="Comprometidos con espacios más limpios, seguros y funcionales"
-        description="Entregamos soluciones integrales de limpieza, mantención y obras menores para empresas, edificios e instalaciones."
+        description="Desde nuestra base en Rancagua, entregamos soluciones de limpieza, mantención y obras para empresas, edificios e instalaciones de todo Chile."
       />
 
       <section className="bg-white" aria-labelledby="quienes-title">
@@ -73,7 +70,8 @@ export default function About() {
             <div className="mt-2 h-1 w-16 rounded bg-fpj-green" aria-hidden="true" />
             <p className="mt-6 text-lg leading-relaxed text-slate-700">
               {site.legalName} es una empresa dedicada a entregar soluciones integrales de
-              limpieza, mantención y obras menores para empresas, edificios e instalaciones.
+              limpieza, mantención y obras para empresas, edificios e instalaciones. Nuestra base
+              está en {site.city}, {site.region}.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-slate-700">
               Reunimos en un solo proveedor servicios que suelen contratarse por separado, para que
@@ -195,8 +193,9 @@ export default function About() {
             Cobertura
           </h2>
           <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-700">
-            Las solicitudes se evalúan según la ubicación del proyecto y la disponibilidad del
-            servicio.
+            Atendemos proyectos en {site.city} y recibimos solicitudes de empresas de todo{' '}
+            {site.country}. La coordinación y disponibilidad se confirman según las características
+            de cada servicio.
           </p>
         </div>
       </section>

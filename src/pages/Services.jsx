@@ -3,6 +3,7 @@ import Seo from '../components/Seo'
 import { services } from '../data/services'
 import ServiceIcon from '../components/ServiceIcon'
 import { externalLinkProps, getWhatsAppUrl } from '../utils/whatsapp'
+import { pageMetadata } from '../data/pageMetadata'
 
 const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fpj-blue'
@@ -44,11 +45,7 @@ function ServiceCard({ service }) {
 export default function Services() {
   return (
     <>
-      <Seo
-        title="Servicios de limpieza, mantención y obras | FPJ Obras y Servicios Integrales"
-        description="Servicios de limpieza, mantención, pintura, remodelaciones y obras menores para empresas, edificios e instalaciones. Solicita tu cotización a FPJ."
-        path="/servicios"
-      />
+      <Seo {...pageMetadata.services} />
       <section className="bg-fpj-graphite text-white" aria-labelledby="servicios-title">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
           <h1 id="servicios-title" className="text-4xl font-extrabold sm:text-5xl">
